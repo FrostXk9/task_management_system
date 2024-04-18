@@ -6,12 +6,12 @@ import { hash } from "bcrypt";
 const onHash = (req, res, next) => {
     try {
         // exclude user img
-        const { user_name, user_role, user_email, user_password, user_phoneNo } = req.body;
+        const { user_name, user_role, user_email, user_password, user_phoneNo, user_img } = req.body;
 
         // because it is not a req from the body but its a req as a file
-        const filePath = req.file ? req.file.path : null;
+        // const filePath = req.file ? req.file.path : null;
 
-        if (!user_name || !user_role || !user_email || !user_password || !user_phoneNo || !filePath) {
+        if (!user_name || !user_role || !user_email || !user_password || !user_phoneNo || !user_img) {
             return res.status(400).send({
                 msg: 'Incomplete user data.'
             });
@@ -29,14 +29,14 @@ const onHash = (req, res, next) => {
 
             try {
 
-                const fileData = await fs.promises.readFile(filePath);
+                // const fileData = await fs.promises.readFile(filePath);
 
-                await addUser(user_name, user_role, user_email, hashPwd, user_phoneNo, fileData);
+                await addUser(user_name, user_role, user_email, hashPwd, user_phoneNo, user_img);
 
                 console.log(`User ${user_name} added successfully.`);
 
-                next();
-
+                next(); 
+ 
             } catch (error) {
 
                 console.error('Error reading file or adding user:', error);

@@ -19,10 +19,10 @@ const getUser = async (user_id) => {
 const addUser = async (user_name, user_role, user_email, user_password, user_phoneNo, user_img) => {
 
     const [user] = await pool.query(`
-        INSERT INTO users (user_name, user_role, user_email, user_password, user_phoneNo, user_img) VALUES (?, DEFAULT, ?, ?, ?, ?)
-    `, [user_name, user_role, user_email, user_password, user_phoneNo, user_img]);
+        INSERT INTO users (user_name, user_role, user_email, user_password, user_phoneNo, user_img) VALUES (?, ?, ?, ?, ?, ?)
+    `, [user_name, user_role, user_email, user_password, user_phoneNo, user_img]); 
 
-    return user.insertId;
+    return user.insertId;  
 
 }
 
@@ -43,7 +43,7 @@ const userLogin = async (user_role, user_email) => {
         SELECT user_password FROM users WHERE user_role = ? AND user_email = ?
     `, [user_role, user_email]);
 
-    return user_password;
+    return user_password; 
 
 }
 
