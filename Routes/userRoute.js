@@ -7,7 +7,7 @@ const router = express.Router()
 // password too long check the data type in the DB
 router.route('/')
     .get(controller.fetchUsers)
-    .post(controller.insertUserToDB)
+    .post(onHash,controller.insertUserToDB)
 
 router.route('/:id')
     .get(controller.fetchUser)

@@ -6,13 +6,16 @@ import express from 'express';
 import taskRouter from './Routes/taskRoute.js';
 import authentication from './Middleware/verifyToken.js';
 import userRoute from './Routes/userRoute.js'
+import userTasksRoute from './Routes/userTaskRoute.js'
 
 const app = express();
 
 const PORT_ADDON = process.env.MYSQL_ADDON_PORT;
 
+
+
 app.use(cors({
-    origin: '',
+    origin: 'http://localhost:8080',
     credentials: true
 }));
 
@@ -30,6 +33,7 @@ app.post('/login', authentication, (req, res) => {
 })
 app.use('/tasks', taskRouter);
 app.use('/users', userRoute);
+app.use('/myTasks', userTasksRoute);
 
 
 app.listen(PORT_ADDON, console.log(`server is running on http://localhost:${PORT_ADDON}`))

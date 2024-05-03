@@ -3,16 +3,7 @@ import express from 'express';
 
 const router = express.Router()
 
-router.route('/')
-    .get(controller.fetchTasks)
-    .post(controller.AddTask)
-
-
-
 router.route('/:id')
-    // http://localhost:3360/:id
-    .get(controller.fetchTask)
-
     // fetch all tasks specific to user
     // http://localhost:3360?user_id=?
     .get(controller.userTasks)
@@ -21,24 +12,13 @@ router.route('/:id')
     // http://localhost:3360/:id/user_id=?
     .post(controller.assignTask)
 
-    //admin usage
+    // user update task status
     // http://localhost:3360/:id
-    .patch(controller.taskEdit)
+    .patch(controller.setTaskState)
 
-    // admin usage
-    // will also configure it to the user who sends a certain task
-    // http://localhost:3360/:id
-    .delete(controller.removeTask)
-
-
-
-
-
-
-
-
-
-
+    // deletes a users personal task
+    // http://localhost:3360/:id/user_id=?
+    .delete(controller.removePersonalTask)
 
 
 export default router

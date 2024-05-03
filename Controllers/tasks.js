@@ -38,15 +38,13 @@ export default {
     removeTask : async (req, res) => {
         try {
 
-            const {taskId} = +req.params.id;
-
-            await deleteTask(taskId);
+            await deleteTask(+req.params.id);
 
             res.send(await getTasks());
 
         } catch (error) {
 
-            res.sendStatus(403);
+            res.sendStatus(404);
 
         }
     },
