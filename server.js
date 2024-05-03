@@ -31,6 +31,11 @@ app.get('/', (req, res) => {
 app.post('/login', authentication, (req, res) => {
     // sent response in middleware
 })
+app.delete('/logout', authentication, (req, res) => {
+    res.send({
+        msg: 'logged out successfully! '
+    })
+})
 app.use('/tasks', taskRouter);
 app.use('/users', userRoute);
 app.use('/myTasks', userTasksRoute);
