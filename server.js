@@ -7,6 +7,7 @@ import taskRouter from './Routes/taskRoute.js';
 import authentication from './Middleware/verifyToken.js';
 import userRoute from './Routes/userRoute.js'
 import userTasksRoute from './Routes/userTaskRoute.js'
+import NewTask from './Routes/NewTask.js'
 
 const app = express();
 
@@ -30,15 +31,16 @@ app.get('/', (req, res) => {
 // paths
 app.post('/login', authentication, (req, res) => {
     // sent response in middleware
-})
-app.delete('/logout', authentication, (req, res) => {
+});
+app.delete('/logout', (req, res) => {
     res.send({
         msg: 'logged out successfully! '
     })
-})
+});
 app.use('/tasks', taskRouter);
 app.use('/users', userRoute);
 app.use('/myTasks', userTasksRoute);
+app.use('/assigned', NewTask);
 
 
 app.listen(PORT_ADDON, console.log(`server is running on http://localhost:${PORT_ADDON}`))

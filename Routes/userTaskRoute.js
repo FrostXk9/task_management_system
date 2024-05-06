@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route('/:id')
     // fetch all tasks specific to user
-    // http://localhost:3360?user_id=?
+    // http://localhost:3360/:id
     .get(controller.userTasks)
 
     // assign task to another user

@@ -76,7 +76,7 @@ export default {
     userTasks : async (req, res) => {
         try {
             
-            const { user_id } = req.query
+            const  user_id  = +req.params.id
 
             let data = await usersTasks(user_id);
 
@@ -94,7 +94,7 @@ export default {
 
         const {user_id} = req.query;
 
-        const {taskId} = +req.params.id;
+        const taskId = +req.params.id;
 
         await assignTaskToUser(taskId, user_id);
 
@@ -104,8 +104,7 @@ export default {
             data : usersTaskData,
             msg : 'Hello a new task has been assigned to you',
             sentMsg : `successfully sent`
-        })
-
+        });
     },
     setTaskState : async (req, res) => {
         try {
