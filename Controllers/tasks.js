@@ -123,7 +123,7 @@ export default {
     },
     removePersonalTask : async (req, res) => {
 
-        const {taskId} = +req.params.id;
+        const taskId = +req.params.id;
 
         const {user_id} = req.query;
 
