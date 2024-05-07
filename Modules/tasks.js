@@ -51,7 +51,7 @@ const deleteTask = async (taskId) => {
 // for admin usage only
 const editTask = async (taskname, taskdeadline, completed, created, taskId) => {
     const [task] = await pool.query(`
-        UPDATE tasks SET taskname = ?, taskdeadline = ?, completed = ?, created = CURRENT_TIMESTAMP 
+        UPDATE tasks SET taskname = ?, taskdeadline = ?, completed = ?, created = ? 
         WHERE taskId = ?
     `, [taskname, taskdeadline, completed, created, taskId])
 }

@@ -68,7 +68,7 @@ export default {
             res.send(await getTasks())
 
         } catch (error) {
-            
+            console.log(error);
             res.sendStatus(404)
 
         }
