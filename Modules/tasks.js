@@ -61,7 +61,7 @@ const usersTasks = async (user_id) => {
     const [result] = await pool.query(`
         SELECT tasks.* 
         FROM tasks
-        JOIN 
+        INNER JOIN 
         user_tasks ON tasks.taskId = user_tasks.taskId
         WHERE 
         user_tasks.user_id = ?
@@ -125,13 +125,13 @@ const UpdateTaskStatus = async (taskId) => {
         if(isCompleted.completed === false){
             await pool.query(`
                 UPDATE tasks SET completed = TRUE WHERE taskId = ?
-            `,[isCompleted, taskId])
+            `,[taskId])
             return task;
 
         } else if (isCompleted.completed === true){
             await pool.query(`
                 UPDATE tasks SET completed = FALSE WHERE taskId = ?
-            `, [isCompleted, taskId])
+            `, [taskId])
             return task;
             
         }

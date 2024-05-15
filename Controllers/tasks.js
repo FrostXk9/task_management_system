@@ -76,7 +76,7 @@ export default {
     userTasks : async (req, res) => {
         try {
             
-            const  user_id  = +req.params.id
+            const user_id = +req.params.id
 
             let data = await usersTasks(user_id);
 
@@ -89,7 +89,7 @@ export default {
             res.sendStatus(404)
 
         }
-    },
+    }, 
     assignTask : async (req, res) => {
 
         const {user_id} = req.query;
@@ -109,9 +109,7 @@ export default {
     setTaskState : async (req, res) => {
         try {
 
-            let {completed} = req.body
-
-            await UpdateTaskStatus(completed, +req.params.id)
+            await UpdateTaskStatus(+req.params.id)
 
             res.send(getTasks())
             
