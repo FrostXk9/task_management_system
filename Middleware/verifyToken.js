@@ -17,7 +17,7 @@ const authentication = async (req, res, next) => {
 
         bcrypt.compare(user_password, targetUser, (err, result) => {
 
-            if(err) throw err
+            if(err) console.log(err)
 
             if(result === true) {
                const {user_role, user_email} = req.body;

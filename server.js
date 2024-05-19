@@ -5,9 +5,10 @@ import cors from 'cors';
 import express from 'express';
 import taskRouter from './Routes/taskRoute.js';
 import authentication from './Middleware/verifyToken.js';
-import userRoute from './Routes/userRoute.js'
-import userTasksRoute from './Routes/userTaskRoute.js'
-import NewTask from './Routes/NewTask.js'
+import userRoute from './Routes/userRoute.js';
+import userTasksRoute from './Routes/userTaskRoute.js';
+import NewTask from './Routes/NewTask.js';
+import assignTask from './Routes/assignRoute.js'
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/tasks', taskRouter);
 app.use('/users', userRoute);
 app.use('/myTasks', userTasksRoute);
 app.use('/assigned', NewTask);
+app.use('/send', assignTask);
 
 
 app.listen(PORT_ADDON, console.log(`server is running on http://localhost:${PORT_ADDON}`))

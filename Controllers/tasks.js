@@ -92,9 +92,9 @@ export default {
     }, 
     assignTask : async (req, res) => {
 
-        const {user_id} = req.query;
+        const {user_id} = req.body;
 
-        const taskId = +req.params.id;
+        const {taskId} = req.body;
 
         await assignTaskToUser(taskId, user_id);
 
