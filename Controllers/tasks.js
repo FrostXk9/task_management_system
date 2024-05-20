@@ -45,6 +45,7 @@ export default {
         } catch (error) {
 
             res.sendStatus(404);
+            console.error(error)
 
         }
     },
