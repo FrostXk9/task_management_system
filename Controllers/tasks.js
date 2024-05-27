@@ -106,7 +106,7 @@ export default {
             msg : 'Hello a new task has been assigned to you',
             sentMsg : `successfully sent`
         });
-    },
+    }, 
     setTaskState : async (req, res) => {
         try {
 

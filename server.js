@@ -8,7 +8,9 @@ import authentication from './Middleware/verifyToken.js';
 import userRoute from './Routes/userRoute.js';
 import userTasksRoute from './Routes/userTaskRoute.js';
 import NewTask from './Routes/NewTask.js';
-import assignTask from './Routes/assignRoute.js'
+import assignTask from './Routes/assignRoute.js';
+import messageRoute from './Routes/messageRoute.js';
+import OpenAI from 'openai';
 
 const app = express();
 
@@ -23,6 +25,9 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+
+// will integrate in the later future of application
+const openai = new OpenAI();
 
 // dummy script
 app.get('/', (req, res) => {
@@ -43,6 +48,6 @@ app.use('/users', userRoute);
 app.use('/myTasks', userTasksRoute);
 app.use('/assigned', NewTask);
 app.use('/send', assignTask);
-
+app.use('/chat', messageRoute);
 
 app.listen(PORT_ADDON, console.log(`server is running on http://localhost:${PORT_ADDON}`))
