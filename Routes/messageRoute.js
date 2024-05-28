@@ -6,11 +6,12 @@ const router = express.Router()
 
 router.route('/')
     .get(controllers.allMsgs)
+    .post(controllers.sendToPeer)
 
 
 router.route('/:id')
     .get(controllers.singleMessage)
-    .post(controllers.sendToPeer)
+    .delete(controllers.delMsg)
 
 
 export default router;

@@ -1,4 +1,4 @@
-import { getMessages, getMessage, sendMessage } from "../Modules/messages.js";
+import { getMessages, getMessage, sendMessage, deleteMessage } from "../Modules/messages.js";
 
 export default {
 
@@ -36,5 +36,9 @@ export default {
         } catch (error) {
             console.log(error)
         }
+    },
+    delMsg : async (req, res) => {
+        await deleteMessage(+req.params.id);
+        res.send(await getMessages());
     }
 }

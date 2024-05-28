@@ -19,15 +19,22 @@ const getMessage = async (user_id) => {
 const sendMessage = async (content) => {
     const [ message ] =  await pool.query(`
     INSERT INTO comments_table (content) VALUES(?)
-    `, [content]);
+    `, [content]); 
     
     return message.insertId;
 }
 
+const deleteMessage = async (comment_id) => {
+    const [message] = await pool.query(`
+        DELETE FROM comments_table WHERE comment_id = ?
+    `, [comment_id])
+}
+ 
 // console.log(await sendMessage('Hello user welcome to chat', 4))
 
 export {
     getMessages,
     getMessage,
-    sendMessage
+    sendMessage,
+    deleteMessage
 }
