@@ -10,7 +10,6 @@ import userTasksRoute from './Routes/userTaskRoute.js';
 import NewTask from './Routes/NewTask.js';
 import assignTask from './Routes/assignRoute.js';
 import messageRoute from './Routes/messageRoute.js';
-import OpenAI from 'openai';
 
 const app = express();
 
@@ -25,9 +24,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
-
-// will integrate in the later future of application
-const openai = new OpenAI();
 
 // dummy script
 app.get('/', (req, res) => {
